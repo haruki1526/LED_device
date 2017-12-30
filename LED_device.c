@@ -33,12 +33,12 @@ static ssize_t led_timer(struct file* flip, const char* buf, size_t count, loff_
 	if(copy_from_user(&t, buf,sizeof(char)))
 		return -EFAULT;
 	printk(KERN_INFO "deba:%d\n",t);
+    if((int)t!=10){
+	    del_timer(&mytimer);
+	    set_timer = t-48 ;
 
-	del_timer(&mytimer);
-	set_timer = t-48 ;
-
-	mod_timer(&mytimer, jiffies + set_timer*HZ);
-
+	    mod_timer(&mytimer, jiffies + set_timer*HZ);
+    }
 
 	return 1;
 }

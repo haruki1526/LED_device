@@ -1,0 +1,1 @@
+cmd_/home/pi/LED_device/LED_device.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/pi/LED_device/LED_device.ko /home/pi/LED_device/LED_device.o /home/pi/LED_device/LED_device.mod.o ;  true
